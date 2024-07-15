@@ -1,0 +1,63 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<style>
+    /* Reset default styles for html and body */
+    html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #000000; /* Black background color */
+        color: #ffffff; /* White text color */
+        height: 100vh; /* Ensure full viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .welcome-container {
+        text-align: center;
+        position: relative;
+        z-index: 1; /* Ensure text is above the image */
+    }
+
+    .welcome-heading {
+        font-size: 3rem; /* Adjust heading font size */
+        margin-bottom: 1rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.5rem; /* Adjust subtitle font size */
+        margin-bottom: 2rem;
+    }
+
+    .btn-welcome {
+        font-size: 1.2rem; /* Adjust button font size */
+        margin-right: 10px; /* Add spacing between buttons */
+    }
+
+    .welcome-image {
+        position: absolute;
+        top: 10%; /* Adjust the distance from the top */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px; /* Adjust the width of the image */
+        height: 200px;
+        z-index: 0; /* Ensure the image is below the text */
+        border-radius: 600px; /* Rounded corners */
+    }
+</style>
+
+<div class="welcome-container">
+    <h1 class="welcome-heading">Welcome to Symphony of Syntax</h1>
+    <p class="welcome-subtitle">Explore the world of coding challenges and improve your skills.</p>
+    <a href="/login/" class="btn btn-primary btn-welcome">Login</a>
+    <a href="/register/" class="btn btn-primary btn-welcome">Register</a>
+</div>
+
+<img src="{% static 'users/welcome_2.jpg' %}" alt="Welcome Image" class="welcome-image">
+
+{% endblock %}
