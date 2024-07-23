@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Compiler</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Online Compiler</h1>
+    <form id="compiler-form" method="post">
+        {% csrf_token %}
+        <label for="language">Language:</label>
+        <select id="language" name="language">
+            <option value="python">Python</option>
+            <option value="cpp">C++</option>
+        </select><br><br>
+
+        <label for="code">Code:</label><br>
+        <textarea id="code" name="code" rows="10" cols="50"></textarea><br><br>
+
+        <label for="input_data">Input:</label><br>
+        <textarea id="input_data" name="input_data" rows="5" cols="50"></textarea><br><br>
+
+        <button type="button" onclick="submitCode()">Run</button>
+    </form>
+
+    <h2>Output:</h2>
+    <pre id="output"></pre>
+
+    <script>
+        function submitCode() {
+            $.ajax({
+                url: "{% url 'compile_code' %}",
+                type: "POST",
+                data: $('#compiler-form').serialize(),
+                success: function(response) {
+                    $('#output').text(response.output);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
