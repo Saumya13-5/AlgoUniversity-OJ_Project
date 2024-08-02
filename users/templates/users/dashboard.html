@@ -1,0 +1,9 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome to your Dashboard!</h2>
+<p>This is the dashboard page where users will be redirected after a successful login.</p>
+<a href="{% url 'compile_code' %}" class="btn btn-primary">Go to Compiler</a>
+{% endblock %}
