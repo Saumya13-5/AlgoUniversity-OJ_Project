@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from Problemset.models import Problem  # Import the Problem model
 
 def welcome_view(request):
     return render(request, 'users/welcome.html')
@@ -53,5 +54,7 @@ def login_view(request):
     return render(request, 'users/login.html')
 
 @login_required
+
 def dashboard_view(request):
-    return render(request, 'users/dashboard.html')
+   problems = Problem.objects.all()  # Get all problems from the database
+   return render(request, 'users/dashboard.html', {'questions': problems})

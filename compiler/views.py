@@ -27,6 +27,7 @@ def run_code(language, code, input_data):
                 source_file.flush()
                 command = f'python {source_file.name}'
                 result = subprocess.run(command, input=input_data, capture_output=True, text=True, shell=True, timeout=5)
+                
         elif language == 'cpp':
             with tempfile.NamedTemporaryFile(suffix='.cpp', delete=False) as source_file:
                 source_file.write(code.encode())

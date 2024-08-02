@@ -1,2 +1,3 @@
-a = input()
-print(a)
+#include<iostream>
+
+int main(){
