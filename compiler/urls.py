@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import compile_code
 
 urlpatterns = [
-    path('', views.compile_code, name='compile_code'),
+    path('run_code/', compile_code, name='compile_code'),
 ]
